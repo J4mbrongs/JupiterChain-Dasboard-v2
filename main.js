@@ -130,8 +130,7 @@ if (copyBtn) {
     alert('Address copied!');
   });
 }
-  
 });
 
-
+updateReceiveAddress();
 
