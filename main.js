@@ -111,6 +111,26 @@ window.addEventListener('load', () => {
     updateOnchain();
     setInterval(updateOnchain, 15000);
   }  
+// === RECEIVE: copy wallet address ===
+const copyBtn = document.getElementById('copyBtn');
+const receiveAddressEl = document.getElementById('receiveAddress');
+
+function updateReceiveAddress() {
+  if (SIGNED_ADDRESS) {
+    receiveAddressEl.textContent = SIGNED_ADDRESS;
+  } else {
+    receiveAddressEl.textContent = 'Connect wallet to receive';
+  }
+}
+
+if (copyBtn) {
+  copyBtn.addEventListener('click', () => {
+    if (!SIGNED_ADDRESS) return alert('Wallet not connected');
+    navigator.clipboard.writeText(SIGNED_ADDRESS);
+    alert('Address copied!');
+  });
+}
+  
 });
 
 
