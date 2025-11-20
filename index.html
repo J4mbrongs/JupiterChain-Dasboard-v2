@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Jupiterchain Dashboard</title>
+<link rel="stylesheet" href="style.css">
+<!-- Ethers v5 UMD for broad compatibility -->
+<script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>🚀 Jupiterchain Dashboard</h1>
+      <div class="subtitle">@Willy Balista</div>
+    </header>
+
+    <main class="grid">
+      <section class="card">
+        <div class="label">⛓️ Block Number</div>
+        <div id="blockNumber" class="value">Loading...</div>
+      </section>
+
+      <section class="card">
+        <div class="label">⛽ Gas Price</div>
+        <div id="gasPrice" class="value">Loading...</div>
+      </section>
+
+      <section class="card">
+        <div class="label">💰 Wallet Balance</div>
+        <div id="balance" class="value">Loading...</div>
+      </section>
+
+      <section class="card wide">
+        <div class="label">👛 Wallet Address</div>
+        <div id="walletAddress" class="value">Not connected</div>
+        <div class="controls">
+          <button id="connectBtn">Connect Wallet</button>
+          <button id="refreshBtn">Refresh</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <small id="status">Status: Idle</small>
+    </footer>
+  </div>
+
+<script src="main.js"></script>
+</body>
+</html>
