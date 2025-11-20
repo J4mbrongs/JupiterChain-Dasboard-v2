@@ -36,6 +36,10 @@ async function rpcCall(method, params=[]){
 }
 
 let balance = `N/A`;
+if (SIGNED_ADDRESS) {
+    const balResult = await rpcCall('eth_getBalance', [SIGNED_ADDRESS, 'latest']);
+    balance = (Number(BigInt(balResult)) / 1e18).toFixed(4);
+}
 // === core update ===
 async function updateOnchain(){
   try{
@@ -49,12 +53,8 @@ async function updateOnchain(){
 
     const block = hexToNumber(bn);
     const gas = formatGwei(gp);
-    if (SIGNED_ADDRESS) {
-    const balResult = await rpcCall('eth_getBalance', [SIGNED_ADDRESS, 'latest']);
-    balance = (Number(BigInt(balResult)) / 1e18).toFixed(4);
-}
-
-    blockEl.textContent = block !== null ? block.toLocaleString() : 'N/A';
+    
+     blockEl.textContent = block !== null ? block.toLocaleString() : 'N/A';
     gasEl.textContent = gp ? gas + ' Gwei' : 'N/A';
     balEl.textContent = bal ? balance + ' ETH' : 'N/A';
     status.textContent = 'Status: OK';
