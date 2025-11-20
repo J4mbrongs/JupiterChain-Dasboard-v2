@@ -130,7 +130,7 @@ window.addEventListener('load', () => {
   } else {
     updateOnchain();
     setInterval(updateOnchain, 15000);
-  }
+  }  
 });
 
 
