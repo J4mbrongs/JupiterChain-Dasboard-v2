@@ -35,29 +35,34 @@ async function rpcCall(method, params=[]){
   return data.result;
 }
 
-let balance = `N/A`;
-if (SIGNED_ADDRESS) {
-    const balResult = await rpcCall('eth_getBalance', [SIGNED_ADDRESS, 'latest']);
-    balance = (Number(BigInt(balResult)) / 1e18).toFixed(4);
-}
 // === core update ===
 async function updateOnchain(){
   try{
     status.textContent = 'Status: Fetching...';
-    // parallel calls
-    const [bn, gp, bal] = await Promise.all([
+
+    // --- basic data from RPC ---
+    const [bn, gp] = await Promise.all([
       rpcCall('eth_blockNumber'),
-      rpcCall('eth_gasPrice'),
-      (DEFAULT_WALLET && !DEFAULT_WALLET.includes('REPLACE_WITH')) ? rpcCall('eth_getBalance', [DEFAULT_WALLET, 'latest']) : Promise.resolve(null)
+      rpcCall('eth_gasPrice')
     ]);
 
+    // parse block & gas
     const block = hexToNumber(bn);
     const gas = formatGwei(gp);
-    
-     blockEl.textContent = block !== null ? block.toLocaleString() : 'N/A';
+
+    // --- fetch balance only if SIGNED_ADDRESS available ---
+    let balanceText = 'N/A';
+    if (SIGNED_ADDRESS) {
+      const balResult = await rpcCall('eth_getBalance', [SIGNED_ADDRESS, 'latest']);
+      balanceText = (Number(BigInt(balResult)) / 1e18).toFixed(4) + ' ETH';
+    }
+
+    // display
+    blockEl.textContent = block !== null ? block.toLocaleString() : 'N/A';
     gasEl.textContent = gp ? gas + ' Gwei' : 'N/A';
-    balEl.textContent = bal ? balance + ' ETH' : 'N/A';
+    balEl.textContent = balanceText;
     status.textContent = 'Status: OK';
+
   }catch(err){
     console.error('Update error', err);
     status.textContent = 'Status: Error - ' + (err.message || err);
