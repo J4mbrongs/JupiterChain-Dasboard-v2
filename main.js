@@ -134,5 +134,5 @@ window.addEventListener('load', () => {
   }  
 });
 
-updateReceiveAddress();
+
 
