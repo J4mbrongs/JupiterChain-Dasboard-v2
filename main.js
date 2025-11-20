@@ -132,5 +132,6 @@ window.addEventListener('load', () => {
     setInterval(updateOnchain, 15000);
   }
 });
+
 updateReceiveAddress();
 
