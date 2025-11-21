@@ -4,6 +4,25 @@
 const RPC_URL = "https://greatest-solitary-seed.quiknode.pro/624c1fa77a92f1db1549ba3246d4d06c4afd7e79/";
 let SIGNED_ADDRESS = null;
 
+document.getElementById("sendBtn").addEventListener("click", async () => {
+  if (typeof window.ethereum !== "undefined") {
+    const provider = window.ethereum;
+    const accounts = await provider.request({ method: 'eth_requestAccounts' });
+    const from = accounts[0];
+
+    const tx = {
+      from,
+      to: "0xAlamatTujuanMasukkanDiSini",
+      value: "0x2386F26FC10000" // = 0.01 ETH
+    };
+
+    provider.request({
+      method: "eth_sendTransaction",
+      params: [tx],
+    });
+  }
+});
+
 // === DOM ===
 const el = id => document.getElementById(id);
 const status = el('status');
