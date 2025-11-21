@@ -108,6 +108,9 @@ async function loadBalance() {
       method: "eth_getBalance",
       params: [accounts[0], "latest"]
     });
+
+    loadBalance();
+    
     const balance = parseInt(balanceHex, 16) / 1e18;
     document.getElementById("balance").innerText = balance.toFixed(4);
   }
@@ -137,4 +140,3 @@ window.addEventListener("load", () => {
     .addEventListener("click", updateOnchain);
 });
 
-loadBalance();
