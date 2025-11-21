@@ -79,11 +79,6 @@ if(window && window.ethereum){
   ethersProvider = new ethers.providers.Web3Provider(window.ethereum);
 }
 
-function onWalletConnected(address) {
-    document.getElementById("address").innerText = address;
-    generateQR(address); // panggil fungsi QR di sini
-}
-
 async function connectWallet(){
   try{
     if(!ethersProvider) return alert('No MetaMask detected');
@@ -133,16 +128,6 @@ if (copyBtn) {
     if (!SIGNED_ADDRESS) return alert('Wallet not connected');
     navigator.clipboard.writeText(SIGNED_ADDRESS);
     alert('Address copied!');
-  });
-}
-
-function generateQR(address) {
-  document.getElementById("qrcode").innerHTML = ""; // reset QR
-
-  new QRCode(document.getElementById("qrcode"), {
-    text: address,
-    width: 160,
-    height: 160
   });
 }
 });
