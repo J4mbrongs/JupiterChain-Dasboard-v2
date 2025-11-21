@@ -12,7 +12,7 @@ document.getElementById("sendBtn").addEventListener("click", async () => {
 
     const tx = {
       from,
-      to: "0xAlamatTujuanMasukkanDiSini",
+      to: "0x1111111111111111111111111111111111111111",
       value: "0x2386F26FC10000" // = 0.01 ETH
     };
 
