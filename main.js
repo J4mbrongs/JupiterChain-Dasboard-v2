@@ -100,6 +100,19 @@ async function connectWallet(){
   }
 }
 
+async function loadBalance() {
+  if (window.ethereum) {
+    const provider = window.ethereum;
+    const accounts = await provider.request({ method: "eth_requestAccounts" });
+    const balanceHex = await provider.request({
+      method: "eth_getBalance",
+      params: [accounts[0], "latest"]
+    });
+    const balance = parseInt(balanceHex, 16) / 1e18;
+    document.getElementById("balance").innerText = balance.toFixed(4);
+  }
+}
+
 // === EVENTS ===
 window.addEventListener("load", () => {
 
@@ -123,3 +136,5 @@ window.addEventListener("load", () => {
   document.getElementById("refreshBtn")
     .addEventListener("click", updateOnchain);
 });
+
+loadBalance();
