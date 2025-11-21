@@ -32,18 +32,23 @@
       </section>
      
       <section class="card wide">
-        <div class="label">👛 Wallet Address</div>
-        <div id="walletAddress" class="value">Not connected</div>
-        <div class="controls">
-          <button id="connectBtn">Connect Wallet</button>
-          <button id="refreshBtn">Refresh</button>
-        <div id="qrcode"></div>
-        <div class="card">
-        <h3>Receive ETH / Token</h3>
-        <p id="receiveAddress">Not connected</p>
-          <button id="copyBtn">Copy Address</button>
-        </div>
-      </section>
+  <div class="label">👛 Wallet Address</div>
+  <div id="walletAddress" class="value">Not connected</div>
+
+  <div class="controls">
+    <button id="connectBtn">Connect Wallet</button>
+    <button id="refreshBtn">Refresh</button>
+  </div>
+</section>
+
+<section class="card">
+  <h3>Receive ETH / Token</h3>
+  <p id="receiveAddress">Not connected</p>
+  <button id="copyBtn">Copy Address</button>
+
+  <!-- TEMPAT QR CODE -->
+  <div id="qrcode" style="margin-top:10px;"></div>
+</section>
     </main>
 
     <footer>
