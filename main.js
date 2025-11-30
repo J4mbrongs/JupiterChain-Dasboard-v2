@@ -130,8 +130,8 @@ async function loadBalance() {
 
     loadBalance();
     
-    const balance = parseInt(balanceHex, 16) / 1e18;
-    document.getElementById("balance").innerText = balance.toFixed(4);
+    const balanceMain = parseInt(balanceHex, 16) / 1e18;
+    document.getElementById("balanceMain").innerText = balance.toFixed(4);
   }
 }
 
