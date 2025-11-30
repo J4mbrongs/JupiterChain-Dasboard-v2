@@ -1,7 +1,7 @@
 /* Jupiterchain Dashboard - main.js */
 
 // === CONFIG ===
-const RPC_URL = "https://greatest-solitary-seed.quiknode.pro/624c1fa77a92f1db1549ba3246d4d06c4afd7e79/";
+const RPC_URL = "https://rpc.ankr.com/eth/5e657da01e7fb61758afcbfdb5957e60521babe47be6063e21a3a6acaab5b486/";
 let SIGNED_ADDRESS = null;
 
 document.getElementById("sendBtn").addEventListener("click", async () => {
