@@ -18,7 +18,7 @@ Send Coin Address
 - Network Ethereum, Req from jupiter-chain-dasboard-v2.vercel.app
 
 Mint NFT
-- hjashdka
+- 
 - 
 
 
